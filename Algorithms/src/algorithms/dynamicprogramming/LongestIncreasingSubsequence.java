@@ -1,4 +1,4 @@
-package algorithms;
+package algorithms.dynamicprogramming;
 
 /**
  * Date 14/01/2018
