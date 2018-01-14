@@ -1,17 +1,17 @@
 package algorithms.dp;
 
-        /*
-         * Date 14/01/2018
-         * @author tiwariabhishek
-         *
-         * Given an array of non negative numbers and a total, is there subset of numbers in this array which adds up
-         * to given total. Another variation is given an array is it possible to split it up into 2 equal
-         * sum partitions. Partition need not be equal sized. Just equal sum.
-         *
-         * Time complexity - O(input.size * total_sum)
-         * Space complexity - O(input.size*total_sum)
-         *
-         */
+/**
+ * Date 14/01/2018
+ *
+ * @author tiwariabhishek
+ * <p>
+ * Given an array of non negative numbers and a total, is there subset of numbers in this array which adds up
+ * to given total. Another variation is given an array is it possible to split it up into 2 equal
+ * sum partitions. Partition need not be equal sized. Just equal sum.
+ * <p>
+ * Time complexity - O(input.size * total_sum)
+ * Space complexity - O(input.size*total_sum)
+ */
 
 public class SubsetSum {
 
