@@ -12,7 +12,6 @@ import java.util.LinkedList;
  *         to maximize profit.
  *         <p>
  *         Time complexity - O(number of transactions * number of days):
- *         TODO: Fast Solution. Will update the method soon.
  *         Space complexity - O(number of transcations * number of days)
  *         <p>
  *         https://leetcode.com/discuss/15153/a-clean-dp-solution-which-generalizes-to-k-transactions
@@ -21,6 +20,32 @@ import java.util.LinkedList;
 
 public class StockBuySellKTransactions {
 
+    /**
+     * This is faster method which does optimization on slower method
+     * Time complexity here is O(K * number of days)
+     * <p>
+     * Formula is
+     * T[i][j] = max(T[i][j-1], prices[j] + maxDiff)
+     * maxDiff = max(maxDiff, T[i-1][j] - prices[j])
+     */
+    public int maxProfitFastSolution(int prices[], int k) {
+        int[][] table = new int[k + 1][prices.length];
+        for (int i = 1; i <= k; i++) {
+            int maxDiff = -prices[0];
+            for (int j = 1; j < prices.length; j++) {
+                table[i][j] = Math.max(table[i][j - 1], prices[j] + maxDiff);
+                maxDiff = Math.max(maxDiff, table[i - 1][j] - prices[j]);
+            }
+        }
+        printActualSolution(table, prices);
+        return table[k][prices.length - 1];
+    }
+
+    /**
+     * This is slow method but easier to understand.
+     * Time complexity is O(k * number of days ^ 2)
+     * T[i][j] = max(T[i][j-1], max(prices[j] - prices[m] + T[i-1][m])) where m is 0...j-1
+     */
     public int maxProfitSlowSolution(int[] prices, int k) {
         int[][] table = new int[k + 1][prices.length];
         for (int i = 1; i <= k; i++) {
@@ -67,5 +92,6 @@ public class StockBuySellKTransactions {
         int prices[] = {2, 5, 7, 1, 4, 3, 1, 3};
 
         System.out.println("Max profit slow solution " + sbt.maxProfitSlowSolution(prices, 3));
+        System.out.println("Max profit fast solution " + sbt.maxProfitFastSolution(prices, 3));
     }
 }
