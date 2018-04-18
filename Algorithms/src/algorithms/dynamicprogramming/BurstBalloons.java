@@ -33,7 +33,7 @@ public class BurstBalloons {
                     if (k > 0) left = input[k - 1];
                     if (k < n - 1) right = input[k + 1];
                     if (i != k) before = table[i][k - 1];
-                    if (j != k) after = table[k + 1][k];
+                    if (j != k) after = table[k + 1][j];
                     table[i][j] = Math.max(table[i][j], after + before + left * input[k] * right);
                 }
             }
