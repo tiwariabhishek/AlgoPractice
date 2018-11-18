@@ -29,7 +29,7 @@ public class BurstBalloons {
             for (int i = 0; i <= n - len; i++) {
                 int j = i + len - 1;
                 for (int k = i; k <= j; k++) {
-                    int before = 0, after = 0, left = 0, right = 0;
+                    int before = 0, after = 0, left = 1, right = 1;
                     if (k > 0) left = input[k - 1];
                     if (k < n - 1) right = input[k + 1];
                     if (i != k) before = table[i][k - 1];
