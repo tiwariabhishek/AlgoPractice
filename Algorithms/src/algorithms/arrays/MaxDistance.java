@@ -14,7 +14,7 @@ import java.util.Comparator;
  * Use DP and build bottom-up solution.
  * <p>
  * Space complexity is O(n)
- * Time complexity - O(n^2)
+ * Time complexity - O(n)
  * <p>
  * References
  * https://www.interviewbit.com/problems/max-distance/
