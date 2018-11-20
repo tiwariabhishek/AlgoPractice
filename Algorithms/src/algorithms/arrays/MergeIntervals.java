@@ -13,8 +13,7 @@ import java.util.ArrayList;
  * Space complexity is O(n)
  *
  * References
- * https://leetcode.com/problems/the-skyline-problem/
- * https://leetcode.com/discuss/67091/once-for-all-explanation-with-clean-java-code-nlog-time-space
+ * https://www.interviewbit.com/problems/merge-intervals/
  */
 
 
