@@ -78,13 +78,13 @@ public class MergeIntervals {
 
     public static void main(String args[]) {
         ArrayList<Interval> intervals = new ArrayList<>();
+        intervals.add(new Interval(1,2));
         intervals.add(new Interval(3,5));
+        intervals.add(new Interval(6,7));
         intervals.add(new Interval(8,10));
-//        intervals.add(new Interval(6,7));
-//        intervals.add(new Interval(8,10));
-//        intervals.add(new Interval(12,16));
+        intervals.add(new Interval(12,16));
         MergeIntervals mergeIntervals = new MergeIntervals();
-        mergeIntervals.insert(intervals, new Interval(1,12))
+        mergeIntervals.insert(intervals, new Interval(4,9))
                 .forEach(interval -> System.out.println(interval.start + " " + interval.end));
 
     }
