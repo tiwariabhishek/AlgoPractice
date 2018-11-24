@@ -1,5 +1,7 @@
 package Algorithms.src.algorithms.arrays;
 
+import com.sun.tools.javac.util.Assert;
+
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -13,7 +15,7 @@ import java.util.Comparator;
  * <p>
  * Use DP and build bottom-up solution.
  * <p>
- * Space complexity is O(n)
+ * Space complexity - O(n)
  * Time complexity - O(n)
  * <p>
  * References
@@ -22,6 +24,8 @@ import java.util.Comparator;
 
 public class MaxDistance {
 
+    // Space complexity - O(n)
+    // Time complexity - O(nlogn)
     private int findMaxDist(int[] inp) {
         // Store the inp val and curr index
         int n = inp.length;
@@ -54,9 +58,39 @@ public class MaxDistance {
         return max == 0 ? -1: max;
     }
 
+    // Space complexity - O(n)
+    // Time complexity - O(n)
+    private int findMaxDistSoln2(int[] inp) {
+        int n = inp.length;
+        int[] lmin = new int[n];
+        int[] rmax = new int[n];
+
+        lmin[0] = inp[0];
+        for(int i=1;i<n;i++) {
+            lmin[i] = Math.min(lmin[i-1], inp[i]);
+        }
+
+        rmax[n-1] = inp[n-1];
+        for(int i = n-2;i>=0;i--) {
+            rmax[i] = Math.max(rmax[i+1], inp[i]);
+        }
+
+        int max, i, j;
+        max = i = j = 0;
+        while(i < n && j < n) {
+            if(rmax[j] >= lmin[i]) {
+                max = Math.max(j-i, max);
+                j++;
+            } else i++;
+        }
+        return max == 0 ? -1: max;
+    }
+
     public static void main(String args[]) {
         int[] inp = {3,5,4,2};
         MaxDistance maxDistance = new MaxDistance();
         System.out.println(maxDistance.findMaxDist(inp));
+        System.out.println(maxDistance.findMaxDistSoln2(inp));
+        Assert.check(maxDistance.findMaxDist(inp) == maxDistance.findMaxDistSoln2(inp));
     }
 }
