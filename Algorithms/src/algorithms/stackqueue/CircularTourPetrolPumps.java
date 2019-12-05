@@ -1,4 +1,4 @@
-package algorithms.stackqueue;
+package Algorithms.src.algorithms.stackqueue;
 
 /**
  * Created by abhishektiwari on 26/04/18.
