@@ -25,7 +25,7 @@ public class DecodeWays {
     //TopDown Approach
     private int countWaysUtil(String s, int start, HashMap<Integer, Integer> map) {
         if (start >= s.length()) return 0;
-        if (map.containsKey(s)) return map.get(s);
+        if (map.containsKey(start)) return map.get(s);
         String curr = s.substring(start, start + 1);
         if (curr.equals("0")) {
             map.put(start, 0);
