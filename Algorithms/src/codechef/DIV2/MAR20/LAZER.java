@@ -27,7 +27,7 @@ public class LAZER {
 
     static long qry(int[] tree, int n, int i) {
         long sum = 0;
-        for(; i>0; i -= i&-i) sum += (long)tree[i];
+        for(; i>0; i -= i&-i) sum += tree[i];
         return sum;
     }
 
