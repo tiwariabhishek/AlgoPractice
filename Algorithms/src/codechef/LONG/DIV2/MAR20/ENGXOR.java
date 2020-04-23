@@ -1,12 +1,11 @@
-package Algorithms.src.codechef.DIV2.APR20;
+package Algorithms.src.codechef.LONG.DIV2.MAR20;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
-public class CARSELL {
+public class ENGXOR {
 
     public static void main(String args[]) {
         try {
@@ -16,23 +15,29 @@ public class CARSELL {
             byte[] eolb = eol.getBytes();
             String str[] = bufferedReader.readLine().split(" ");
             int t = Integer.parseInt(str[0]);
-            int mod = (int) 1e9 + 7;
             while (t-- > 0) {
                 str = bufferedReader.readLine().split(" ");
                 int n = Integer.parseInt(str[0]);
+                int q = Integer.parseInt(str[1]);
                 str = bufferedReader.readLine().split(" ");
-                int[] a = new int[n];
-                for(int i=0;i<n;i++) a[i] = Integer.parseInt(str[i]);
-                Arrays.sort(a);
-
-                int dec = 0;
-                long ans = 0;
-                for(int i = n-1; i>=0; i--) {
-                    ans += (Math.max(0, a[i]-dec)); ans %= mod;dec++;
+                int o = 0;
+                for(int i=0;i<n;i++) o += Integer.bitCount(Integer.parseInt(str[i])) % 2;
+                int e = n - o;
+                while (q-->0) {
+                    str = bufferedReader.readLine().split(" ");
+                    int p = Integer.parseInt(str[0]);
+                    int tmp_o = o;
+                    int tmp_e = e;
+                    if(Integer.bitCount(p) % 2 > 0) {
+                        int tmp = tmp_e;
+                        tmp_e = tmp_o;
+                        tmp_o = tmp;
+                    }
+                    bufferedOutputStream.write(Integer.toString(tmp_e).getBytes());
+                    bufferedOutputStream.write(" ".getBytes());
+                    bufferedOutputStream.write(Integer.toString(tmp_o).getBytes());
+                    bufferedOutputStream.write(eolb);
                 }
-
-                bufferedOutputStream.write(Long.toString(ans).getBytes());
-                bufferedOutputStream.write(eolb);
             }
             bufferedOutputStream.flush();
             bufferedOutputStream.close();

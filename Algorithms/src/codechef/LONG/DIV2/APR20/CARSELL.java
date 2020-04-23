@@ -1,21 +1,12 @@
-package Algorithms.src.codechef.DIV2.APR20;
+package Algorithms.src.codechef.LONG.DIV2.APR20;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
-public class STRNO {
-
-    private static boolean isDivKTimes(int n, int k) {
-        int sq = (int) Math.sqrt(n) + 1;
-        for(int i = 2; i <= sq && k > 0; i++)
-            while (n%i == 0) {
-                n /= i; k--;
-            }
-        if(n > 1) k--;
-        return k <= 0;
-    }
+public class CARSELL {
 
     public static void main(String args[]) {
         try {
@@ -25,17 +16,22 @@ public class STRNO {
             byte[] eolb = eol.getBytes();
             String str[] = bufferedReader.readLine().split(" ");
             int t = Integer.parseInt(str[0]);
-            int max_k = 31;
+            int mod = (int) 1e9 + 7;
             while (t-- > 0) {
                 str = bufferedReader.readLine().split(" ");
-                int x = Integer.parseInt(str[0]);
-                int k = Integer.parseInt(str[1]);
+                int n = Integer.parseInt(str[0]);
+                str = bufferedReader.readLine().split(" ");
+                int[] a = new int[n];
+                for(int i=0;i<n;i++) a[i] = Integer.parseInt(str[i]);
+                Arrays.sort(a);
 
-                int min_x = (int) Math.pow(2, Math.min(max_k, k));
-                String ans = "0";
-                if(x >= min_x && (k == 1 || isDivKTimes(x, k))) ans = "1";
+                int dec = 0;
+                long ans = 0;
+                for(int i = n-1; i>=0; i--) {
+                    ans += (Math.max(0, a[i]-dec)); ans %= mod;dec++;
+                }
 
-                bufferedOutputStream.write(ans.getBytes());
+                bufferedOutputStream.write(Long.toString(ans).getBytes());
                 bufferedOutputStream.write(eolb);
             }
             bufferedOutputStream.flush();

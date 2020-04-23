@@ -1,11 +1,13 @@
-package Algorithms.src.codechef.DIV2.APR20;
+package Algorithms.src.codechef.LONG.DIV2.MAR20;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
 
-public class COVIDLQ {
+public class CHPINTU {
 
     public static void main(String args[]) {
         try {
@@ -15,25 +17,25 @@ public class COVIDLQ {
             byte[] eolb = eol.getBytes();
             String str[] = bufferedReader.readLine().split(" ");
             int t = Integer.parseInt(str[0]);
-            int dist = 6;
             while (t-- > 0) {
                 str = bufferedReader.readLine().split(" ");
                 int n = Integer.parseInt(str[0]);
+                int m = Integer.parseInt(str[1]);
                 str = bufferedReader.readLine().split(" ");
-                int[] a = new int[n];
-                for(int i=0;i<n;i++) a[i] = Integer.parseInt(str[i]);
-                String ans = "YES";
-                int last_i = -1;
-                for(int i=0; i<n; i++) {
-                    if(a[i] > 0) {
-                        if(last_i == -1 || i - last_i >= dist) last_i = i;
-                        else {
-                            ans = "NO"; break;
-                        }
+                String str2[] = bufferedReader.readLine().split(" ");
+                Map<Integer, Integer> fp = new HashMap<>();
+                for(int i=0;i<n;i++) {
+                    int f = Integer.parseInt(str[i]) - 1;
+                    int p = Integer.parseInt(str2[i]);
+                    if(!fp.containsKey(f)) {
+                        fp.put(f, 0);
                     }
+                    p += fp.get(f);
+                    fp.put(f, p);
                 }
-
-                bufferedOutputStream.write(ans.getBytes());
+                int min = Integer.MAX_VALUE;
+                for(int i=0;i<m;i++) if(fp.containsKey(i)) min = Math.min(min, fp.get(i));
+                bufferedOutputStream.write(Integer.toString(min).getBytes());
                 bufferedOutputStream.write(eolb);
             }
             bufferedOutputStream.flush();

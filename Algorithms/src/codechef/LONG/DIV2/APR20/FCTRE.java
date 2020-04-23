@@ -1,4 +1,4 @@
-package Algorithms.src.codechef.DIV2.APR20;
+package Algorithms.src.codechef.LONG.DIV2.APR20;
 
 
 // Source1 - https://codeforces.com/blog/entry/43230
