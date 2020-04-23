@@ -1,4 +1,4 @@
-package Algorithms.src.codechef.COOKOFF.DIV2;
+package Algorithms.src.codechef.COOKOFF.DIV2.APR20;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
