@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 class Point {
@@ -68,12 +67,7 @@ public class LAZER {
                     points.add(new Point(2, i, y));
                 }
 
-                Collections.sort(points, new Comparator<Point>() {
-                    @Override
-                    public int compare(Point o1, Point o2) {
-                        return o1.y == o2.y ? o1.type - o2.type : o1.y - o2.y;
-                    }
-                });
+                Collections.sort(points, (o1, o2) -> o1.y == o2.y ? o1.type - o2.type : o1.y - o2.y);
 
                 for(Point point: points) {
                     switch (point.type) {
